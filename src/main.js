@@ -1,4 +1,4 @@
-const apiKey = 'bd61a77539c783064932957b78bd4755'
+const apiKey = ''
 const url = 'http://api.themoviedb.org/3/trending/movie/day'
 
 async function getTrendingMovies () {
@@ -6,7 +6,7 @@ async function getTrendingMovies () {
     const data = await res.json()
 
     const movies = data.results;
-	console.log(movies);
+	console.log(data, movies);
 }
 
 getTrendingMovies()
