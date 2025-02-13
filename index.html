@@ -6,16 +6,43 @@
     <title>View movies</title>
 </head>
 <body>
-    <header>
+    <nav>
+        <div class="logo">MovieFlix</div>
         <div class="search-container">
-            <input type="text" id="search" placeholder="Buscar película o serie...">
-            <button id="search-btn">Buscar</button>
+            <input type="text" placeholder="Search movies and series...">
+            <button>Search</button>
         </div>
-    </header>
-    <main>
-        <section class="movies-container" id="movies-container">
-            <!-- Las películas se cargarán aquí dinámicamente con JavaScript -->
-        </section>
+        <button class="theme-toggle">Toggle Theme</button>
+    </nav>
+  
+    <main class="content">
+        <!-- Example cards -->
+        <div class="card">
+            <img src="/api/placeholder/250/300" alt="Movie 1">
+            <div class="card-content">
+                <h3>Movie Title 1</h3>
+                <p>A brief description of the movie that gives viewers an idea of what to expect...</p>
+                <button>See More</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="/api/placeholder/250/300" alt="Movie 2">
+            <div class="card-content">
+                <h3>Series Title 1</h3>
+                <p>An exciting new series that will keep you on the edge of your seat...</p>
+                <button>See More</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="/api/placeholder/250/300" alt="Movie 3">
+            <div class="card-content">
+                <h3>Movie Title 2</h3>
+                <p>Another fascinating story that will take you on an adventure...</p>
+                <button>See More</button>
+            </div>
+        </div>
     </main>
     <link rel="stylesheet" href="./styles.css">
     <script src="./src/main.js"></script>
