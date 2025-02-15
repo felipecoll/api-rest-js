@@ -1,18 +1,19 @@
+import { API_KEY } from "./keys.js";
 
-// import { API_KEY } from "./keys.js"
-// url para peliculas
-const url_movies = 'http://api.themoviedb.org/3/trending/movie/day'
+const api = axios.create({
+    baseURL: 'http://api.themoviedb.org/3/',
+    headers: {
+        'Content-Type': 'application/json;charset=utf-8'
+    },
+    params: {
+        'api_key': API_KEY,
+        //'language': 'es',
+    }
+})
 
-// url para categorias 
-const url_categories = 'http://api.themoviedb.org/3/genre/movie/list'
-
-// Obtenemos las pelicuas en carteleria en idioma es
 async function getTrendingMovies () {
-    const res = await fetch(`${url_movies}?api_key=`+''+'&language=es')
-    const data = await res.json()
-
+    const {data} = await api('trending/movie/day')
     const movies = data.results;
-	//console.log(data, movies);
 
     movies.forEach(movie => {
         const vistaPreviaMovies = document.querySelector('#movie-content-preview')
@@ -32,15 +33,10 @@ async function getTrendingMovies () {
     });
 }
 
-// Obtenemos las categorias de las peliculas 
-
 async function getCategoriesMovies () {
-    const res = await fetch(`${url_categories}?api_key=`+'')
-    const data = await res.json()
-
+    const {data} = await api('genre/movie/list')
     const categories = data.genres;
    
-	
     categories.forEach(category => {
         const categoryView = document.querySelector('#category-container .categories-container')
 
