@@ -1,9 +1,14 @@
 
 // import { API_KEY } from "./keys.js"
-const url = 'http://api.themoviedb.org/3/trending/movie/day'
+// url para peliculas
+const url_movies = 'http://api.themoviedb.org/3/trending/movie/day'
 
+// url para categorias 
+const url_categories = 'http://api.themoviedb.org/3/genre/movie/list'
+
+// Obtenemos las pelicuas en carteleria en idioma es
 async function getTrendingMovies () {
-    const res = await fetch(`${url}?api_key=`+''+'&language=es')
+    const res = await fetch(`${url_movies}?api_key=`+''+'&language=es')
     const data = await res.json()
 
     const movies = data.results;
@@ -25,7 +30,35 @@ async function getTrendingMovies () {
             movieContenedor.appendChild(movieImg)
             vistaPreviaMovies.appendChild(movieContenedor)
     });
-   
 }
 
+// Obtenemos las categorias de las peliculas 
+
+async function getCategoriesMovies () {
+    const res = await fetch(`${url_categories}?api_key=`+'')
+    const data = await res.json()
+
+    const categories = data.genres;
+   
+	
+    categories.forEach(category => {
+        const categoryView = document.querySelector('#category-container .categories-container')
+
+        const categoryContenedor = document.createElement('div')
+        categoryContenedor.classList.add('categories-container')
+
+        const categoryTitle = document.createElement('h3')
+        categoryTitle.setAttribute('id', category.name)
+        const categoryTitleText = document.createTextNode(category.name)
+
+       
+        categoryTitle.appendChild(categoryTitleText)
+        categoryContenedor.appendChild(categoryTitle)
+        categoryView.appendChild(categoryContenedor)
+    });
+}
+
+
+// Llamada a funciones para su ejecucion
 getTrendingMovies()
+getCategoriesMovies()
