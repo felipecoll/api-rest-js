@@ -55,6 +55,3 @@ async function getCategoriesMovies () {
 }
 
 
-// Llamada a funciones para su ejecucion
-getTrendingMovies()
-getCategoriesMovies()
